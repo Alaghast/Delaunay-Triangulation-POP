@@ -2,6 +2,10 @@
 
 POP plugin for TouchDesigner that generates 2D Delaunay triangulation from a point input.
 
+![Delaunay Triangulation](A-Delaunay.png)
+![Delaunay Wireframed](B-Delaunay.png)
+![Network Example](C-NetworkExample.png)
+
 ## What It Does
 	•	Reads points from the P attribute of the input POP.
 	•	Projects points onto the XY, YZ, or ZX plane.
