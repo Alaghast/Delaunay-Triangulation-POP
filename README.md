@@ -1,8 +1,8 @@
-Delaunay POP v.1.0
+# Delaunay POP v.1.0
 
 POP plugin for TouchDesigner that generates 2D Delaunay triangulation from a point input.
 
-What It Does
+## What It Does
 	•	Reads points from the P attribute of the input POP.
 	•	Projects points onto the XY, YZ, or ZX plane.
 	•	Generates Delaunay triangles with robust output, even for degenerate inputs.
@@ -11,14 +11,14 @@ What It Does
         For static or non-changing inputs, Sync mode is preferred to ensure immediate and deterministic results
 	•	Passes point attributes to the output like a standard POP operator
 
-Libraries Used
+## Libraries Used
 	•	TouchDesigner POP C++ API
 	•	Delaunator C++ (header-only)
 
-Requirements
+## Requirements
 	•	TouchDesigner 2025+
 
-Installation
+## Installation
 	•	You can copy the plugin into your project and load it through the CPlusPlus POP operator, as shown in the provided examples in “Delaunay Example/MAC” or “Delaunay Example/WINDOWS”.
 	•	Alternatively, you can install it directly in TouchDesigner like other any Custom OPs so it can be accessed from the Custom panel in the OP Create Dialog.
 
