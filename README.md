@@ -31,10 +31,10 @@ Documents/Derivative/Plugins
 Usually:
 C:/Users/<username>/Documents/Derivative/Plugins
 
-#macOS:
+# MacOS:
 /Users/<username>/Library/Application Support/Derivative/TouchDesigner099/Plugins
 
-Distribution
+## Distribution
 	•	Plugin format: .plugin (macOS bundle), .dll (Windows)
 	•	Operator name: Delaunay
 	•	Version: 1.0
