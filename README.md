@@ -22,8 +22,8 @@ A POP plugin for TouchDesigner that generates **2D Delaunay triangulation** from
 - Delaunator C++ (header-only)
 
 ## Requirements
-
-- TouchDesigner 2025.32440+
+- Touchdesigner 2025+ (If you just use the plugin elsewhere)
+- TouchDesigner 2025.32440+ (If you open the examples, due the Trace POP)
 
 ## Installation
 
