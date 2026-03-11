@@ -25,6 +25,20 @@ A POP plugin for TouchDesigner that generates **2D Delaunay triangulation** from
 - Touchdesigner 2025+ (If you just use the plugin elsewhere)
 - TouchDesigner 2025.32440+ (If you open the examples, due the Trace POP)
 
+## How Download This Repo
+On Mac, if you download the .plugin file as a zip or zip it yourself, this removes the momentary signature.
+I suggest you simply clone it directly from the GitHub repository using the git clone command in your system terminal in a folder of your choice to avoid this problem.
+
+The "Git Clone" procedure for those who don't know how to do it:
+
+- Click on Code on the repository and copy the url
+
+![Copy_the_Url](https://github.com/user-attachments/assets/8b09796e-8b3f-4df2-9f74-748ae9817c2b)
+
+- Open your terminal in a folder you wish and digit 'git clone theUrlYouCopiedBefore'
+
+![git_clone](https://github.com/user-attachments/assets/f0a322c9-e29e-41c9-82d8-e4173e39b9ef)
+
 ## Installation
 
 - Copy the plugin into your project and load it through the `CPlusPlus POP` operator, as shown in the examples provided in `Delaunay Example/MAC` or `Delaunay Example/WINDOWS`
@@ -56,6 +70,12 @@ Typical path:
 - Version: `1.0`
 - License: `MIT`
 - Author: [Edwin Lucchesi](https://www.edwinlucchesi.com/)
+
+## Possible Issues
+The Delaunator library can become unstable with nearly collinear, near-duplicate, extremely thin, or otherwise degenerate point sets,
+so users should avoid feeding it points that collapse to an almost 1D or numerically ambiguous distribution.
+If that happens, you'll see stalling or a freeze in the plugin or TD itself.
+A trick that i introduced in the examples toe is using a little Random POP Noise on P attribute that seems help to avoid that freezing/stalling behaviour
 
 ## Share Your Results
 
