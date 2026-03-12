@@ -2,9 +2,9 @@
 
 A POP plugin for TouchDesigner that generates **2D Delaunay triangulation** from a point input.
 
-![Delaunay Triangulation](A-Delaunay.png)
-![Delaunay Wireframed](B-Delaunay.png)
-![Network Example](C-NetworkExample.png)
+![Delaunay Triangulation](assets/A-Delaunay.png)
+![Delaunay Wireframed](assets/B-Delaunay.png)
+![Network Example](assets/C-NetworkExample.png)
 
 ## What It Does
 
@@ -25,7 +25,7 @@ A POP plugin for TouchDesigner that generates **2D Delaunay triangulation** from
 - Touchdesigner 2025+ (If you just use the plugin elsewhere)
 - TouchDesigner 2025.32440+ (If you open the examples, due the Trace POP)
 
-## How Download This Repo
+## How to Download this Repo
 On Mac, if you download the .plugin file as a zip or zip it yourself, this removes the momentary signature.
 I suggest you simply clone it directly from the GitHub repository using the git clone command in your system terminal in a folder of your choice to avoid this problem.
 
