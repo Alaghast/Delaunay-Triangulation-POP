@@ -76,6 +76,7 @@ The Delaunator library can become unstable with nearly collinear, near-duplicate
 so users should avoid feeding it points that collapse to an almost 1D or numerically ambiguous distribution.
 If that happens, you'll see stalling or a freeze in the plugin or TD itself.
 A trick that i introduced in the examples toe is using a little Random POP Noise on P attribute that seems help to avoid that freezing/stalling behaviour
+Added a "Prune Warning" button to allow checking if the input contains points that could cause this stall
 
 ## Share Your Results
 
