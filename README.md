@@ -1,4 +1,4 @@
-# Delaunay POP v1.0
+# Delaunay POP
 
 A POP plugin for TouchDesigner that generates **2D Delaunay triangulation** from a point input.
 
@@ -86,5 +86,7 @@ I'll be happy to see your results!
 Instagram: [@Alaghast](https://www.instagram.com/alaghast/)
 
 Want support me and this project? [Click Here!](https://ko-fi.com/alaghast)
+
+Want follow some of my future updates? [Click Here!](https://www.patreon.com//Alaghast)
 
 2025-26
