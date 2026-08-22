@@ -27,11 +27,11 @@ All toggles default Off. When On, the value is written on the output.
 
 **Primitive Center** (`PrimCenter`) — center of each triangle.
 
-[Watch](assets/primcenter.mp4)
+https://github.com/user-attachments/assets/94099707-808a-43f8-873c-9897bb27d29c
 
 **Primitive Area** (`PrimArea`) — area of each triangle.
 
-[Watch](assets/primarea.mp4)
+https://github.com/user-attachments/assets/7fa85e56-4e81-4095-b020-f7f986c802c4
 
 **Primitive Color** (`Color`) — flat color per triangle, taken from point Color.
 
@@ -39,11 +39,11 @@ All toggles default Off. When On, the value is written on the output.
 
 **Circumcircle** (`Circumcenter`, `Circumradius`) — center and radius of the circle through each triangle's three vertices.
 
-[Watch](assets/circumcircle.mp4)
+https://github.com/user-attachments/assets/9f391a5e-89e2-4fac-93bf-04222e5935fb
 
 **Neighbor Count** (`NeighborCount`) — how many triangles meet at each point.
 
-[Watch](assets/neighborcount.mp4)
+https://github.com/user-attachments/assets/43eb4804-d970-4b35-8554-9ef9f3642aef
 
 ## Libraries Used
 
