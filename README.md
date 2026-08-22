@@ -8,75 +8,98 @@ A POP plugin for TouchDesigner that generates **2D Delaunay triangulation** from
 
 ## What It Does
 
-- Reads points from the input POP's `P` attribute
-- Projects points onto the `XY`, `YZ`, or `ZX` plane
-- Generates Delaunay triangles reliably, even with degenerate inputs
+- Reads points from a connected POP (`P` and other point attributes) or from a **CHOP Reference**
+  - CHOP Reference uses Array layout (one sample per point)
+  - Named `P` channels are used when present; otherwise the first two or three channels become X, Y, and Z (missing Z is 0)
+- Projects points onto the `XY`, `YZ`, or `ZX` plane; the unused axis is set to 0 in output `P`
+- Builds a 2D Delaunay triangulation with robust integer predicates
+- **Output Mode:** `Triangles` (filled faces), `Edges` (a closed outline per triangle), or `None` (the input points with no mesh; with Circumcircle On, each point is a triangle circumcenter)
 - Supports both `Sync` and `Async` modes through the `Async` toggle
-  - `Async` mode is recommended for animated or continuously changing inputs because it allows non-blocking computation
-  - For static inputs, `Sync` mode is recommended to ensure immediate and deterministic results
+  - `Async` is recommended for animated or continuously changing inputs (non-blocking, about one frame of delay)
+  - For static inputs, `Sync` is recommended for immediate, deterministic results
+- Optional attributes (all default Off): `PrimCenter`, `PrimArea`, `Color`, `Circumcenter` + `Circumradius`, `NeighborCount` — see [Attributes](#attributes)
+- **Delete Input Attributes:** On keeps only positions from the input (plus any attributes you enable). Off (default) also keeps the other input point attributes
 - Passes point attributes through to the output like a standard POP operator
+
+## Attributes
+
+All toggles default Off. When On, the value is written on the output.
+
+**Primitive Center** (`PrimCenter`) — center of each triangle.
+
+[Watch](assets/primcenter.mp4)
+
+**Primitive Area** (`PrimArea`) — area of each triangle.
+
+[Watch](assets/primarea.mp4)
+
+**Primitive Color** (`Color`) — flat color per triangle, taken from point Color.
+
+![Primitive Color](assets/primitivecolor.jpg)
+
+**Circumcircle** (`Circumcenter`, `Circumradius`) — center and radius of the circle through each triangle's three vertices.
+
+[Watch](assets/circumcircle.mp4)
+
+**Neighbor Count** (`NeighborCount`) — how many triangles meet at each point.
+
+[Watch](assets/neighborcount.mp4)
 
 ## Libraries Used
 
 - TouchDesigner POP C++ API
-- Delaunator C++ (header-only)
+- [delaunay32](https://github.com/morishuz/delaunay32)
 
 ## Requirements
-- Touchdesigner 2025+ (If you just use the plugin elsewhere)
-- TouchDesigner 2025.32440+ (If you open the examples, due the Trace POP)
+
+- TouchDesigner 2025.33070 or later
+- macOS (Apple Silicon) or Windows
+
+The example `.toe` included in the release zip requires the same TouchDesigner build.
 
 ## How to Download this Repo
-On Mac, if you download the .plugin file as a zip or zip it yourself, this removes the momentary signature.
-I suggest you simply clone it directly from the GitHub repository using the git clone command in your system terminal in a folder of your choice to avoid this problem.
 
-The "Git Clone" procedure for those who don't know how to do it:
+Download the latest release for your operating system (do not clone this repository to install the plugin):
 
-- Click on Code on the repository and copy the url
+- [Latest Release](https://github.com/Alaghast/Delaunay-Triangulation-POP/releases/latest)
+- macOS: `Delaunay-1.9.4-MAC.zip`
+- Windows: `Delaunay-1.9.4-WIN.zip`
 
-![Copy_the_Url](https://github.com/user-attachments/assets/8b09796e-8b3f-4df2-9f74-748ae9817c2b)
-
-- Open your terminal in a folder you wish and digit 'git clone theUrlYouCopiedBefore'
-
-![git_clone](https://github.com/user-attachments/assets/f0a322c9-e29e-41c9-82d8-e4173e39b9ef)
+Unzip the archive fully into a folder (for example `Delaunay-1.9.4/`) **before** running Uninstall or the installer. Do not launch `.app`, `.pkg`, `.cmd`, or `.exe` files from inside the still-zipped archive.
 
 ## Installation
 
-- Copy the plugin into your project and load it through the `CPlusPlus POP` operator, as shown in the examples provided in `Delaunay Example/MAC` or `Delaunay Example/WINDOWS`
-- Alternatively, install it directly in TouchDesigner like any other Custom OP so that it becomes available from the **Custom** panel in the **OP Create Dialog**
+1. Unzip the release as described above.
+2. **Uninstall first** to remove older copies (including previous drop-in plugins):
+   - macOS: open `Delaunay Uninstall.app`
+   - Windows: run `Delaunay_Uninstall.cmd`
+3. Run the installer like a normal application:
+   - macOS: open `Delaunay-TouchDesigner-1.9.4.pkg`
+   - Windows: run `Delaunay-TouchDesigner-1.9.4-win64.exe`
+4. Fully quit and restart TouchDesigner.
+5. Add a **Delaunay** POP from the **Custom** family in the OP Create Dialog.
 
-Custom OPs can be installed by placing the plugin in the correct location on disk. TouchDesigner will detect it automatically at startup.
-
-- On Windows, a plugin is a `.dll` file, possibly accompanied by additional files
-- On macOS, a plugin is a `.plugin` folder
+The unzipped folder also contains `MANUAL.md` and `Delaunay_Example_2025.33070.toe`.
 
 ### Plugin Locations
 
-#### Windows
-
-`Documents/Derivative/Plugins`
-
-Typical path:
-
-`C:/Users/<username>/Documents/Derivative/Plugins`
+The installer places the plugin in the standard TouchDesigner Plugins directory, inside **AlaghastPOP**:
 
 #### macOS
 
-`/Users/<username>/Library/Application Support/Derivative/TouchDesigner099/Plugins`
+`/Users/<username>/Library/Application Support/Derivative/TouchDesigner099/Plugins/AlaghastPOP/`
+
+#### Windows
+
+`C:/Users/<username>/Documents/Derivative/Plugins/AlaghastPOP/`
 
 ## Distribution
 
-- Plugin format: `.plugin` (macOS bundle), `.dll` (Windows)
+- Installer: `.pkg` (macOS), `.exe` (Windows)
 - Operator name: `Delaunay`
-- Version: `1.0`
+- Version: `1.9.4`
 - License: `MIT`
 - Author: [Edwin Lucchesi](https://www.edwinlucchesi.com/)
-
-## Possible Issues
-The Delaunator library can become unstable with nearly collinear, near-duplicate, extremely thin, or otherwise degenerate point sets,
-so users should avoid feeding it points that collapse to an almost 1D or numerically ambiguous distribution.
-If that happens, you'll see stalling or a freeze in the plugin or TD itself.
-A trick that i introduced in the examples toe is using a little Random POP Noise on P attribute that seems help to avoid that freezing/stalling behaviour
-Added a "Prune Warning" button to allow checking if the input contains points that could cause this stall
 
 ## Share Your Results
 
@@ -85,8 +108,8 @@ I'll be happy to see your results!
 
 Instagram: [@Alaghast](https://www.instagram.com/alaghast/)
 
-Want support me and this project? [Click Here!](https://ko-fi.com/alaghast)
+Want support my developments of future plugins? [Patreon](https://www.patreon.com/Alaghast)
 
-Want follow some of my future updates? [Click Here!](https://www.patreon.com//Alaghast)
+Want Advanced features update of this plugin in future? [Ko-fi shop](https://ko-fi.com/alaghast/shop)
 
 2025-26
