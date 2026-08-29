@@ -77,7 +77,8 @@ Unzip the archive fully into a folder (for example `Delaunay-1.9.4/`) **before**
    - macOS: open `Delaunay-TouchDesigner-1.9.4.pkg`
    - Windows: run `Delaunay-TouchDesigner-1.9.4-win64.exe`
 4. Fully quit and restart TouchDesigner.
-5. Add a **Delaunay** POP from the **Custom** family in the OP Create Dialog.
+5. When TouchDesigner shows the plugin scan dialog, click **Allow**. Clicking **Deny** will prompt again on every restart until the plugin is accepted.
+6. Add a **Delaunay** POP from the **Custom** family in the OP Create Dialog.
 
 The unzipped folder also contains `MANUAL.md` and `Delaunay_Example_2025.33070.toe`.
 
