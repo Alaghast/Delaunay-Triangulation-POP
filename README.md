@@ -109,8 +109,4 @@ I'll be happy to see your results!
 
 Instagram: [@Alaghast](https://www.instagram.com/alaghast/)
 
-Want support my developments of future plugins? [Patreon](https://www.patreon.com/Alaghast)
-
-Want Advanced features update of this plugin in future? [Ko-fi shop](https://ko-fi.com/alaghast/shop)
-
 2025-26
